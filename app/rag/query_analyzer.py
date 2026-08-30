@@ -3,7 +3,7 @@ import logging
 from typing import List
 
 from groq import Groq
-from app.config import GROQ_API_KEY
+from app.config import GROQ_API_KEY, GROQ_MODEL
 
 logger = logging.getLogger(__name__)
 
@@ -14,7 +14,7 @@ class QueryAnalyzer:
     """
     def __init__(self):
         self.groq_client = Groq(api_key=GROQ_API_KEY)
-        self.model = "llama-3.1-8b-instant"
+        self.model = GROQ_MODEL
 
     def detect_intent(self, question: str, main_modules: List[str]) -> dict:
         """

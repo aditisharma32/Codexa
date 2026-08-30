@@ -29,7 +29,7 @@ LLM_PROVIDER = os.getenv("LLM_PROVIDER", "groq")  # 'groq' or 'ollama'
 
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "").strip()
-GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile").strip()
+GROQ_MODEL = os.getenv("GROQ_MODEL", "qwen/qwen3.8-27b").strip()
 
 
 EMBEDDING_PROVIDER = os.getenv("EMBEDDING_PROVIDER", "local").strip()  # 'local', 'openai', or 'gemini'

@@ -3,7 +3,8 @@ import logging
 from typing import Dict, List, Any
 
 from groq import Groq
-from app.config import GROQ_API_KEY
+from app.config import GROQ_API_KEY, GROQ_MODEL
+import logging
 
 logger = logging.getLogger(__name__)
 
@@ -14,7 +15,7 @@ class RepositoryAnalyzer:
     """
     def __init__(self):
         self.groq_client = Groq(api_key=GROQ_API_KEY)
-        self.model = "llama-3.1-8b-instant"
+        self.model = GROQ_MODEL
 
     def analyze(self, metadata_files: List[Dict[str, str]]) -> Dict[str, Any]:
         """

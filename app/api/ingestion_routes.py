@@ -152,7 +152,10 @@ def _run_ingestion_task(url_str: str):
                     if match:
                         sleep_time = float(match.group(1)) + 1.0
                         logger.info(f"Rate limit hit. Waiting {sleep_time} seconds before retrying...")
+                        original_stage = ingestion_status_tracker[url_str].get("stage", "")
+                        ingestion_status_tracker[url_str]["stage"] = f"Rate limited (Gemini free tier). Paused for 60s..."
                         time.sleep(sleep_time)
+                        ingestion_status_tracker[url_str]["stage"] = original_stage
                     else:
                         time.sleep((2 ** attempt) * 2)
                     
